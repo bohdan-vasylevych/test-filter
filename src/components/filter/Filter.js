@@ -7,14 +7,26 @@ import FilterControls from './filter-controls/FilterControls';
 import FilterResults from './filter-results/FilterResults';
 
 class Filter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDefaultGrid: true
+    }
+  }
+
+  changeGrid = () => {
+    this.setState({ isDefaultGrid: !this.state.isDefaultGrid });
+  };
+
   render() {
     const { filteredUsers, loading, error } = this.props;
+    const { isDefaultGrid } = this.state;
 
     return (
       <Row>
-        <Col lg={4}>
-          <FilterControls />
-        </Col>
+        {isDefaultGrid && <Col lg={4}>
+          <FilterControls changeGrid={this.changeGrid} />
+        </Col>}
 
         <Col lg={8}>
           {loading && <div>Loading...</div>}
@@ -22,6 +34,10 @@ class Filter extends Component {
           {!loading && !error && !filteredUsers.length && <div>No users match applied filters</div>}
           {!loading && !error && !!filteredUsers.length && <FilterResults filteredUsers={filteredUsers} />}
         </Col>
+
+        {!isDefaultGrid && <Col lg={4}>
+          <FilterControls changeGrid={this.changeGrid} />
+        </Col>}
       </Row>
     );
   }

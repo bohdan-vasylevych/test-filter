@@ -122,6 +122,13 @@ class FilterControls extends Component {
             <Button variant="primary" size="sm" onClick={() => this.clearDate()}>Clear date</Button>
           </div>
         </Form.Group>
+
+        <Form.Group controlId="grid">
+          <div>
+            <h2>Change grid</h2>
+            <Button variant="primary" size="sm" onClick={() => this.props.changeGrid()}>Reverse grid</Button>
+          </div>
+        </Form.Group>
       </Form>
     );
   }
@@ -129,7 +136,8 @@ class FilterControls extends Component {
 
 FilterControls.propTypes = {
   data: PropTypes.array.isRequired,
-  updateFilteredUsers: PropTypes.func.isRequired
+  updateFilteredUsers: PropTypes.func.isRequired,
+  changeGrid: PropTypes.func.isRequired
 };
 
 export default connect(
