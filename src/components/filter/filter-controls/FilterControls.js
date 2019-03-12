@@ -85,10 +85,10 @@ class FilterControls extends Component {
         <h2>Filter by</h2>
 
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Author name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Name"
+            placeholder="Author name"
             name="selectedName"
             value={this.state.selectedName}
             onChange={(e) => this.handleInputChange(e)}
@@ -116,7 +116,7 @@ class FilterControls extends Component {
             <DatePicker
               selected={this.state.selectedDate}
               onChange={(date) =>this.handleDateChange(date)}
-              placeholderText="Select a date..."
+              placeholderText="  Select a date..."
               dropdownMode="select"
             />
             <Button variant="primary" size="sm" onClick={() => this.clearDate()}>Clear date</Button>

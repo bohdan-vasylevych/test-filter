@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as reducer from '../reducers/users';
 import Filter from '../components/filter/Filter';
 import './Home.scss';
+import VacancyDetails from './VacancyDetails';
 
 class Home extends Component {
   componentDidMount() {
@@ -12,9 +13,12 @@ class Home extends Component {
   }
 
   render() {
+    const { currentVacancy } = this.props;
+
     return (
       <div className="home">
-        <Filter />
+        {!currentVacancy && <Filter />}
+        {currentVacancy && <VacancyDetails />}
       </div>
     );
   }
@@ -25,7 +29,7 @@ Home.propTypes = {
 };
 
 export default connect(
-  state => state,
+  ({ users: { currentVacancy } }) => ({ currentVacancy }),
   dispatch => ({
     loadUsers: () => {dispatch(reducer.onUsersFetch())}
   })

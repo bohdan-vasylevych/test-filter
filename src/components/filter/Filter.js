@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import FilterControls from './filter-controls/FilterControls';
 import FilterResults from './filter-results/FilterResults';
@@ -11,20 +11,18 @@ class Filter extends Component {
     const { filteredUsers, loading, error } = this.props;
 
     return (
-      <Container>
-        <Row>
-          <Col lg={4}>
-            <FilterControls />
-          </Col>
+      <Row>
+        <Col lg={4}>
+          <FilterControls />
+        </Col>
 
-          <Col lg={8}>
-            {loading && <div>Loading...</div>}
-            {error && <div>{ error }</div>}
-            {!loading && !error && !filteredUsers.length && <div>No users match applied filters</div>}
-            {!loading && !error && !!filteredUsers.length && <FilterResults filteredUsers={filteredUsers} />}
-          </Col>
-        </Row>
-      </Container>
+        <Col lg={8}>
+          {loading && <div>Loading...</div>}
+          {error && <div>{ error }</div>}
+          {!loading && !error && !filteredUsers.length && <div>No users match applied filters</div>}
+          {!loading && !error && !!filteredUsers.length && <FilterResults filteredUsers={filteredUsers} />}
+        </Col>
+      </Row>
     );
   }
 }
