@@ -22,7 +22,6 @@ class VacancyDetails extends Component {
 
 
   render() {
-    debugger
     const { users: { currentVacancy: { title, name } } } = this.props;
     const images = this.getImages();
 
