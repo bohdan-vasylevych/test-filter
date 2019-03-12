@@ -26,33 +26,36 @@ class VacancyDetails extends Component {
     const images = this.getImages();
 
     return (
-      <Row>
-        <Col md={8}>
-          <Carousel className="vacancy-carousel" indicators={false}>
-            {images.map(({ src, name }) => (
-              <Carousel.Item>
-                <img
-                  className="vacancy-img d-block w-100"
-                  src={src}
-                  alt={name}
-                />
-                <Carousel.Caption>
-                  <h3>{ name }</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Col>
-        <Col md={4}>
-          <Card>
-            <Card.Body>
-              <Card.Title>{ title }</Card.Title>
-              <Card.Text>Hi. My name is { name } and I'm looking for a { title } {this.getRandomText()}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <React.Fragment>
+        <h3 className="vacancy-title">{ title }</h3>
+        <Row>
+          <Col md={8}>
+            <Carousel className="vacancy-carousel" indicators={false}>
+              {images.map(({ src, name }) => (
+                <Carousel.Item>
+                  <img
+                    className="vacancy-img d-block w-100"
+                    src={src}
+                    alt={name}
+                  />
+                  <Carousel.Caption>
+                    <h3>{ name }</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Col>
+          <Col md={4}>
+            <Card>
+              <Card.Body className="vacancy-details">
+                <Card.Title>Vacancy details</Card.Title>
+                <Card.Text>Hi. My name is { name } and I'm looking for a { title } {this.getRandomText()}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </React.Fragment>
     );
   }
 }
