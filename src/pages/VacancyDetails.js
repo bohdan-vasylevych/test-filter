@@ -31,8 +31,8 @@ class VacancyDetails extends Component {
         <Row>
           <Col md={8}>
             <Carousel className="vacancy-carousel" indicators={false}>
-              {images.map(({ src, name }) => (
-                <Carousel.Item>
+              {images.map(({ src, name }, i) => (
+                <Carousel.Item key={`${name}-${i}`}>
                   <img
                     className="vacancy-img d-block w-100"
                     src={src}
