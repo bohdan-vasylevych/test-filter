@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 
 import * as reducer from '../reducers/users';
 import Filter from '../components/filter/Filter';
-import './Home.scss';
 import VacancyDetails from './VacancyDetails';
+
+import './Home.scss';
 
 class Home extends Component {
   componentDidMount() {
@@ -25,7 +26,8 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    loadUsers: PropTypes.func.isRequired
+  currentVacancy: PropTypes.object,
+  loadUsers: PropTypes.func.isRequired
 };
 
 export default connect(

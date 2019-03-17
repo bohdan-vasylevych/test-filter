@@ -1,0 +1,7 @@
+.filter {
+  @include display-grid(4fr 8fr);
+
+  @media #{$mobile} {
+    @include display-grid(1fr);
+  }
+}

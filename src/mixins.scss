@@ -1,5 +1,12 @@
+$mobile: "only screen and (max-width : 1080px)";
+
 @mixin flex-center() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin display-grid($columns) {
+  display: grid;
+  grid-template-columns: $columns;
 }

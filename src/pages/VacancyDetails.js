@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, Carousel, Col, Row } from 'react-bootstrap';
+import { Card, Carousel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import './VacancyDetails.scss';
@@ -7,13 +7,13 @@ import './VacancyDetails.scss';
 class VacancyDetails extends Component {
   getImages = () => ([
     {
-      src: 'https://www.acreaty.com/recruiter/img/blog/Information_Technology.jpg',
+      src: 'https://ugra-tv.ru/upload/iblock/ffa/ffaa6e7b933c0c9f470ff959948193a3.jpg',
       name: 'First slide'
     }, {
       src: 'https://www.acreaty.com/recruiter/img/blog/Information_Technology.jpg',
       name: 'Second slide'
     }, {
-      src: 'https://www.acreaty.com/recruiter/img/blog/Information_Technology.jpg',
+      src: 'https://cdn1.itpro.co.uk/sites/itpro/files/images/dir_177/it_photo_88780.jpg',
       name: 'Third slide'
     }
   ]);
@@ -26,36 +26,32 @@ class VacancyDetails extends Component {
     const images = this.getImages();
 
     return (
-      <React.Fragment>
-        <h3 className="vacancy-title">{ title }</h3>
-        <Row>
-          <Col md={8}>
-            <Carousel className="vacancy-carousel" indicators={false}>
-              {images.map(({ src, name }, i) => (
-                <Carousel.Item key={`${name}-${i}`}>
-                  <img
-                    className="vacancy-img d-block w-100"
-                    src={src}
-                    alt={name}
-                  />
-                  <Carousel.Caption>
-                    <h3>{ name }</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </Col>
-          <Col md={4}>
-            <Card>
-              <Card.Body className="vacancy-details">
-                <Card.Title>Vacancy details</Card.Title>
-                <Card.Text>Hi. My name is { name } and I'm looking for a { title } {this.getRandomText()}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </React.Fragment>
+      <div className="vacancy-details">
+        <h3 className="vacancy-details-title">{ title }</h3>
+        <div className="vacancy-details-content">
+          <Carousel className="vacancy-details-carousel" indicators={false}>
+            {images.map(({ src, name }, i) => (
+              <Carousel.Item key={`${name}-${i}`}>
+                <img
+                  className="vacancy-img d-block w-100"
+                  src={src}
+                  alt={name}
+                />
+                <Carousel.Caption>
+                  <h3>{ name }</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+          <Card>
+            <Card.Body className="vacancy-details-box">
+              <Card.Title>Vacancy details</Card.Title>
+              <Card.Text>Hi. My name is { name } and I'm looking for a { title } {this.getRandomText()}</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      </div>
     );
   }
 }

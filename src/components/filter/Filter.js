@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
 
 import FilterControls from './filter-controls/FilterControls';
 import FilterResults from './filter-results/FilterResults';
 
+import './Filter.scss';
+
 class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDefaultGrid: true
-    }
-  }
-
-  changeGrid = () => {
-    this.setState({ isDefaultGrid: !this.state.isDefaultGrid });
-  };
-
   render() {
     const { filteredUsers, loading, error } = this.props;
-    const { isDefaultGrid } = this.state;
+
+    if (error) {
+      return <div>{ error }</div>;
+    }
 
     return (
-      <Row>
-        {isDefaultGrid && <Col lg={4}>
-          <FilterControls changeGrid={this.changeGrid} />
-        </Col>}
+      <div className="filter">
+        <div>
+          <FilterControls  />
+        </div>
 
-        <Col lg={8}>
-          {loading && <div>Loading...</div>}
-          {error && <div>{ error }</div>}
-          {!loading && !error && !filteredUsers.length && <div>No users match applied filters</div>}
-          {!loading && !error && !!filteredUsers.length && <FilterResults filteredUsers={filteredUsers} />}
-        </Col>
-
-        {!isDefaultGrid && <Col lg={4}>
-          <FilterControls changeGrid={this.changeGrid} />
-        </Col>}
-      </Row>
+        <div>
+          {!loading && !filteredUsers.length && <div>No users match applied filters</div>}
+          {!loading && !!filteredUsers.length && <FilterResults filteredUsers={filteredUsers} />}
+        </div>
+      </div>
     );
   }
 }

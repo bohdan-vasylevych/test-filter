@@ -28,7 +28,7 @@ class FilterResults extends Component {
     const { filteredUsers } = this.props;
 
     return (
-      <React.Fragment>
+      <div className="filter-results">
         {this.state.pageOfItems.map(({ name, title, date, country }, i) => {
           const formattedDate = moment(date).format('DD-MM-YYYY');
 
@@ -45,7 +45,7 @@ class FilterResults extends Component {
         )}
 
         <Paginator items={filteredUsers} onChangePage={(pageOfItems) => this.onChangePage(pageOfItems)}/>
-      </React.Fragment>
+      </div>
     );
   }
 }
